@@ -37,7 +37,8 @@
             depends_on:
             - chrome
         chrome:
-            image: selenium/standalone-chrome:latest
+            # image: selenium/standalone-chrome:latest    
+            image: selenium/standalone-chrome:3.8.1 
             ports:
             - "4444:4444"
             shm_size: 2g
@@ -50,6 +51,13 @@
 
         docker-compose logs
 
+*   `standalone-chrome:3.8.1`
+
+    使用它的原因：
+
+        webdriver.Remote() 不支持 cdp 操作，所以新版的 chrome 不能使用 cdp 来修改，webdriver.navigator 的值。
+
+        这里使用老版的方法可以通过 开发者模型 来对其进行修改
 
 
 
